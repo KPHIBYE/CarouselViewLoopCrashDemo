@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CarouselViewLoopCrashDemo"
+             x:Class="CarouselViewLoopCrashDemo.MainPage">
+    <ContentPage.Resources>
+        <local:RemoveFromParentConverter x:Key="RemoveFromParentConverter" />
+    </ContentPage.Resources>
+
+    <CarouselView x:Name="MyCarousel" Loop="True">
+        <CarouselView.ItemsSource>
+            <x:Array Type="{x:Type Label}">
+                <Label Text="Item 1" />
+                <Label Text="Item 2" />
+            </x:Array>
+        </CarouselView.ItemsSource>
+        <CarouselView.ItemTemplate>
+            <DataTemplate>
+                <ContentView Content="{Binding}" />
+                <!--<ContentView Content="{Binding ., Converter={StaticResource RemoveFromParentConverter}}" />-->
+            </DataTemplate>
+        </CarouselView.ItemTemplate>
+    </CarouselView>
+
+</ContentPage>
